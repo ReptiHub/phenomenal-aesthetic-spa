@@ -291,9 +291,6 @@ summary:hover{color:var(--gold)}
 
 /* parallax & motion */
 .hero::before{transform:scale(1.06)}
-@keyframes floaty{from{transform:translateY(0)}to{transform:translateY(-6px)}}
-.medcred-avatar,.team-avatar{animation:floaty 4.5s ease-in-out infinite alternate}
-@media(prefers-reduced-motion:reduce){.hero::before,.cat-media,.why-img{transform:none}.medcred-avatar,.team-avatar{animation:none}.final{background-attachment:scroll}}
 
 /* flagship — stem cell */
 .flagship{padding:8.5rem 0;background:var(--ink);color:var(--ivory);position:relative;overflow:hidden}
@@ -424,20 +421,10 @@ summary:hover{color:var(--gold)}
 .pillars-sec,.team-sec,.faq-sec,.why-sec{background:var(--porcelain)}
 
 /* ── page transitions ─────────────────────────────────────── */
-@view-transition{navigation:auto}
-/* the outgoing page holds; only the new one fades up over it, so no blank
-   frame and no two grounds visible at once */
-::view-transition-old(root){animation:none;opacity:1}
-::view-transition-new(root){animation:pageIn .42s cubic-bezier(.25,.6,.3,1) both}
-@keyframes pageIn{from{opacity:0}to{opacity:1}}
-
-/* No scripted fade. Fading the old page out leaves a blank frame before the
-   next one paints — that blank frame IS the blink. A plain navigation between
-   two pages that share the same painted ground reads as instant. */
-
-@media(prefers-reduced-motion:reduce){
-  ::view-transition-old(root),::view-transition-new(root){animation:none}
-}
+/* None. A crossfade briefly shows the new page over the old one, so the
+   incoming dark header appears above the outgoing page's content and the
+   fold looks like it jumps. A plain navigation, with the first paint already
+   correct, is instant and still. */
 
 /* ── mobile menu ──────────────────────────────────────────── */
 .nav-toggle{display:none;width:44px;height:44px;border:none;background:none;cursor:pointer;padding:0;position:relative;z-index:82;margin-right:-.5rem}
