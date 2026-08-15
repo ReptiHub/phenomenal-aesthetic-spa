@@ -32,7 +32,7 @@ h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.18;letter-spacin
 .announce span{color:var(--gold-soft)}
 
 /* nav — quiet hierarchy: logo left, links small beside CTA */
-nav{position:sticky;top:0;z-index:50;background:rgba(253,251,247,.92);backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+nav{position:relative;z-index:50;background:var(--porcelain);border-bottom:1px solid var(--line)}
 .nav-in{display:flex;align-items:center;justify-content:space-between;padding:1rem 0}
 .logo{font-family:var(--serif);font-size:1.15rem;letter-spacing:.06em}
 .logo em{font-style:normal;color:var(--gold)}
@@ -455,7 +455,7 @@ body.menu-open .nav-toggle span:last-child{transform:translateY(-.5px) rotate(-4
     opacity:0;transition:opacity .5s ease .34s}
   body.menu-open nav .nav-links::after{opacity:1}
   body.menu-open{overflow:hidden}
-  nav{background:rgba(253,251,247,.96)}
+  nav{background:var(--porcelain)}
   body.menu-open nav{background:transparent;border-bottom-color:transparent}
   body.menu-open .logo{color:var(--ivory);position:relative;z-index:82}
 
