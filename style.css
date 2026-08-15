@@ -759,7 +759,7 @@ body.chat-open .chat-panel{opacity:1;visibility:visible;transform:none}
   transition:border-color .35s ease,color .35s ease}
 .chat-chip:hover{border-color:var(--gold);color:var(--ink)}
 
-.chat-form{display:flex;align-items:stretch;border-top:1px solid var(--line);margin-top:1rem;flex:none}
+.chat-form{display:flex;align-items:stretch;border-top:1px solid var(--line);margin-top:1rem;flex:none;background:#fff}
 .chat-input{flex:1;border:none;background:none;padding:1rem 1.4rem;font-family:var(--sans);font-size:.88rem;
   font-weight:300;color:var(--ink);outline:none;min-width:0}
 .chat-input::placeholder{color:var(--stone)}
@@ -769,8 +769,8 @@ body.chat-open .chat-panel{opacity:1;visibility:visible;transform:none}
 .chat-send::after{content:"";position:absolute;left:50%;top:50%;width:8px;height:8px;
   border-top:1px solid #fff;border-right:1px solid #fff;transform:translate(-60%,-50%) rotate(45deg)}
 
-.chat-foot{font-size:.63rem;line-height:1.6;color:var(--stone);padding:.7rem 1.4rem .9rem;
-  border-top:1px solid var(--line);background:#fff;flex:none}
+.chat-foot{font-size:.63rem;line-height:1.6;color:var(--stone);padding:.85rem 1.4rem;text-align:center;
+  letter-spacing:.04em;border-top:1px solid var(--line);background:#fff;flex:none}
 
 /* the sticky Call/Book bar owns the bottom of a phone screen, so the launcher
    sits above it and the panel takes the sheet */
@@ -786,3 +786,16 @@ body.chat-open .chat-panel{opacity:1;visibility:visible;transform:none}
   .chat-launch,.chat-panel{transition:none}
   .chat-typing i{animation:none;opacity:.6}
 }
+
+/* ── mobile: the bar follows you down the page ────────────── */
+@media(max-width:820px){
+  /* desktop keeps position:relative — sticky there was what made the header
+     overlap the black page hero */
+  nav{position:sticky;top:0}
+  /* the bar would otherwise sit over the heading an in-page link jumps to */
+  [id]{scroll-margin-top:88px}
+}
+.chat-status{display:flex;align-items:center;gap:.42rem;font-family:var(--sans);font-size:.62rem;
+  letter-spacing:.14em;text-transform:uppercase;color:rgba(247,242,234,.55);margin-top:.45rem;font-weight:300}
+.chat-status i{width:5px;height:5px;border-radius:50%;background:#7fb069;flex:none;
+  box-shadow:0 0 0 3px rgba(127,176,105,.16)}

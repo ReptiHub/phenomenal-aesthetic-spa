@@ -87,8 +87,8 @@
   }
 
   var FALLBACK = 'That one I\'d like our team to answer for you properly rather than guess. ' +
-                 'You can reach us on ' + PHONE + ', open every day until 7pm — or I can point you ' +
-                 'to the full treatment menu if that helps.';
+                 'Leave it with me and we will come back to you — or call ' + PHONE + ', which is ' +
+                 'answered at any hour. I can also point you to the full treatment menu.';
 
   var GREETING = /^(hi|hey|hello|good (morning|afternoon|evening)|yo|sup)\b/i;
 
@@ -96,17 +96,18 @@
   var launcher = document.createElement('button');
   launcher.className = 'chat-launch';
   launcher.type = 'button';
-  launcher.setAttribute('aria-label','Ask a question');
-  launcher.innerHTML = '<span class="cl-icon" aria-hidden="true"></span><span class="cl-text">Ask us</span>';
+  launcher.setAttribute('aria-label','Chat with Nora, our booking concierge');
+  launcher.innerHTML = '<span class="cl-icon" aria-hidden="true"></span><span class="cl-text">Ask Nora</span>';
 
   var panel = document.createElement('div');
   panel.className = 'chat-panel';
   panel.setAttribute('role','dialog');
-  panel.setAttribute('aria-label','Ask Phenomenal Aesthetic');
+  panel.setAttribute('aria-label','Chat with Nora');
   panel.innerHTML =
     '<div class="chat-head">' +
       '<div><p class="chat-eyebrow">Phenomenal Aesthetic</p>' +
-      '<p class="chat-title">How may we help?</p></div>' +
+      '<p class="chat-title">Nora</p>' +
+      '<p class="chat-status"><i></i>Booking around the clock</p></div>' +
       '<button class="chat-close" type="button" aria-label="Close"></button>' +
     '</div>' +
     '<div class="chat-log" id="chatLog" role="log" aria-live="polite"></div>' +
@@ -116,8 +117,7 @@
         'placeholder="Ask about treatments, pricing or hours" aria-label="Your question">' +
       '<button class="chat-send" type="submit" aria-label="Send"></button>' +
     '</form>' +
-    '<p class="chat-foot">Answers drawn from our treatment menu. For anything medical, ' +
-      'we\'ll put you with a person.</p>';
+    '<p class="chat-foot">Answered any hour &middot; Anything medical goes to a person</p>';
 
   document.body.appendChild(launcher);
   document.body.appendChild(panel);
@@ -127,7 +127,7 @@
   var form  = panel.querySelector('#chatForm');
   var input = panel.querySelector('#chatInput');
 
-  var CHIPS = ['What are your hours?','How much is a Hydrafacial?','Do you offer Botox?','What happens at a first visit?'];
+  var CHIPS = ['Can I book now?','How much is a Hydrafacial?','Do you offer Botox?','What happens at a first visit?'];
 
   function bubble(who, text, opts){
     var el = document.createElement('div');
@@ -208,8 +208,9 @@
   }
   function start(){
     started = true;
-    bubble('bot','Welcome to Phenomenal Aesthetic. Ask me about any treatment, our pricing, ' +
-                 'or when we\'re open — we\'re here every day until seven.');
+    bubble('bot','Good day — I\'m Nora, the concierge at Phenomenal Aesthetic. Treatments run ten ' +
+                 'until seven, but you can chat or call at any hour and I will take your booking. ' +
+                 'Ask me about any treatment, its price, or what it is good for.');
     renderChips();
   }
   function close(){
