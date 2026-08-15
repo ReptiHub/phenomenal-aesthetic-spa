@@ -305,10 +305,10 @@ summary:hover{color:var(--gold)}
 .flagship::before{content:"";position:absolute;inset:-40%;background:radial-gradient(ellipse at 70% 30%,rgba(176,131,73,.18),transparent 55%);pointer-events:none}
 .flagship .wrap{position:relative}
 .flagship .eyebrow{color:var(--gold-soft)}
-.flagship h2{font-size:clamp(2rem,5vw,3.2rem);max-width:18ch;margin-bottom:1.2rem}
+.flagship h2{font-size:clamp(2rem,5vw,3.2rem);max-width:26ch;margin-bottom:1.4rem;text-wrap:balance}
 .flagship h2 em{font-family:var(--accent);font-style:italic;font-weight:500;color:var(--gold-soft)}
-.flagship p.fl-lead{color:rgba(247,242,234,.75);max-width:56ch;margin-bottom:2rem;font-size:1.02rem}
-.fl-points{display:flex;gap:2.5rem;flex-wrap:wrap;margin-bottom:2.4rem}
+.flagship p.fl-lead{color:rgba(247,242,234,.78);max-width:74ch;margin-bottom:2.4rem;font-size:1.08rem;line-height:1.75}
+.fl-points{display:flex;gap:2.6rem;flex-wrap:wrap;margin-bottom:2.6rem}
 .fl-points div{border-top:1px solid var(--gold);padding-top:.9rem;min-width:180px;flex:1}
 .fl-points b{font-family:var(--serif);font-weight:400;display:block;font-size:1.05rem;margin-bottom:.25rem;color:var(--ivory)}
 .fl-points span{font-size:.85rem;color:rgba(247,242,234,.6)}
