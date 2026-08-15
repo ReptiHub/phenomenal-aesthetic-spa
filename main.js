@@ -1,6 +1,3 @@
-/* ensure the deferred stylesheet is applied even if its onload was missed */
-(function(){var l=document.querySelector('link[href$="style.css"][media="print"]');if(l) l.media='all';})();
-
 /* ── homepage treatment accordion ─────────────────────────── */
 (function(){
   var stage = document.getElementById('svcStage');
