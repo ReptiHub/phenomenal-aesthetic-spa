@@ -22,7 +22,7 @@
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth;background:#181410;overscroll-behavior-y:none}
 body{font-family:var(--sans);color:var(--ink);background:var(--porcelain) !important;line-height:1.68;font-weight:300;letter-spacing:.012em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
-img{max-width:100%;display:block}
+img{max-width:100%;height:auto;display:block}
 a{color:inherit;text-decoration:none}
 h1,h2,h3{font-family:var(--serif);font-weight:400;line-height:1.18;letter-spacing:.004em}
 .wrap{width:min(1120px,92%);margin:0 auto}
@@ -53,7 +53,7 @@ nav{position:relative;z-index:50;background:var(--porcelain);border-bottom:1px s
 /* hero */
 .hero{position:relative;min-height:88svh;display:flex;align-items:flex-end;color:#fff;isolation:isolate;overflow:hidden}
 .hero::before{content:"";position:absolute;inset:0;background:#241d16 url('images/hero-lounge.jpg') center 30%/cover no-repeat;z-index:-2}
-.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(36,29,22,.44) 0%,rgba(28,22,17,.6) 50%,rgba(24,20,16,.93) 100%);z-index:-1}
+.hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(36,29,22,.44) 0%,rgba(28,22,17,.6) 50%,rgba(24,20,16,.93) 100%);z-index:-1}@media(max-width:820px){.hero::before{background-image:url('images/hero-lounge-sm.jpg')}}
 .hero-in{padding:4.5rem 0 4rem}
 .hero .eyebrow{color:var(--gold-soft)}
 .hero h1{font-size:clamp(2.6rem,8vw,5.2rem);max-width:14ch;margin-bottom:1.2rem}
@@ -168,7 +168,7 @@ details p{padding:0 0 1.4rem;color:var(--stone);font-size:.95rem;max-width:65ch}
 @media(max-width:520px){.medcred-chips{grid-template-columns:1fr}.medcred-chips span{border-right:none}}
 
 /* final cta */
-.final{padding:8.5rem 0;background:linear-gradient(rgba(36,29,22,.74),rgba(24,20,16,.78)),url('images/reception.jpg') center/cover;color:#fff;text-align:center;padding:6.5rem 0}
+.final{padding:8.5rem 0;background:linear-gradient(rgba(36,29,22,.74),rgba(24,20,16,.78)),url('images/final-band.jpg') center/cover;color:#fff;text-align:center;padding:6.5rem 0}
 .final h2{font-size:clamp(2rem,5.5vw,3.2rem);max-width:20ch;margin:0 auto 1rem}
 .final p{color:rgba(255,255,255,.8);margin-bottom:2rem}
 
@@ -384,6 +384,17 @@ summary:hover{color:var(--gold)}
   .svc-stage,.svc-stage.is-open{grid-template-columns:1fr;height:auto}
   .svc-stage .svc,.svc-stage .svc-panel{grid-row:auto}
   .svc-stage .svc.is-out{display:none}
+  /* height:0 keeps the panel from driving the row on a desktop grid; on a
+     single mobile column it collapsed the panel to nothing */
+  .svc-stage.is-open .svc-panel{height:auto;min-height:0;overflow:visible}
+  /* the panel is the stage's first child so the desktop grid can pin it to
+     column 2; on one mobile column that puts the prices above their own
+     heading, so the card leads and the panel follows */
+  .svc-stage .svc-panel{order:1}
+  .svc-stage.is-open .svc.is-active{order:0}
+  /* the hidden CTA still reserved its line, leaving a dead gap above the panel */
+  .svc-stage.is-open .svc.is-active .svc-open{display:none}
+  .svc-stage.is-open .p-scroll{overflow:visible;max-height:none}
   .svc-stage.is-open .svc.is-active,.svc-stage.is-open .svc-panel{overflow:visible;box-shadow:none}
   .svc-stage.is-open .svc.is-active::after,.svc-stage.is-open .svc-panel::before{display:none}
   .p-scroll{grid-template-columns:1fr;overflow:visible}
@@ -548,8 +559,8 @@ body.menu-open .nav-toggle span:last-child{transform:translateY(-.5px) rotate(-4
   .medcred-grid{gap:2.2rem}
   .medcred-bio{margin-bottom:1.6rem}
   .flagship{padding:3.6rem 0}
-  .fl-points{gap:1.2rem;margin-bottom:1.6rem}
-  .fl-points div{padding-top:.7rem;min-width:0}
+  .fl-points{gap:1.4rem;margin-bottom:1.6rem;flex-direction:column}
+  .fl-points div{padding-top:.7rem;min-width:0;flex:none}
   .final{padding:3.6rem 0}
   .steps{gap:1.4rem}
   .why-grid{gap:1.8rem}
@@ -577,7 +588,10 @@ body.menu-open .nav-toggle span:last-child{transform:translateY(-.5px) rotate(-4
 .medcred img{filter:var(--grade)}
 
 /* framed photographs carry a whisper of warmth over the top */
-.cat-media,.why-img,.faq-aside{position:relative}
+.cat-media,.why-img,.faq-aside{position:relative;isolation:isolate}
+/* the offset gold frame, shared by all three page photographs */
+.why-img::after,
+.faq-aside::after{content:"";position:absolute;inset:1.1rem -1.1rem -1.1rem 1.1rem;border:1px solid var(--gold);z-index:-1;pointer-events:none}
 .cat-media::before,
 .why-img::before,
 .faq-aside::before{content:"";position:absolute;inset:0;z-index:1;pointer-events:none;
@@ -619,6 +633,7 @@ body.menu-open .nav-toggle span:last-child{transform:translateY(-.5px) rotate(-4
 @media(max-width:860px){
   .why-grid,.faq-grid{align-items:start}
   .why-img img,.faq-aside img{height:auto;aspect-ratio:16/10}
+  .why-img::after,.faq-aside::after{inset:.8rem -.8rem -.8rem .8rem}
 }
 
 /* header content is held to a fixed frame on every page */
@@ -660,9 +675,16 @@ body.menu-open .nav-toggle span:last-child{transform:translateY(-.5px) rotate(-4
 .rc-treatment{display:block;font-size:.6rem;letter-spacing:.16em;text-transform:uppercase;color:rgba(247,242,234,.42);margin-top:.22rem}
 
 @media(max-width:860px){
-  .review-card{flex:0 0 76vw;padding:1.8rem 1.6rem 1.6rem}
+  /* On a phone a row that moves on its own cannot be read. The rails become
+     swipeable instead: the guest controls it, cards snap, and the next card
+     peeks in so it is obvious there are more. */
+  .review-rail{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;
+    scrollbar-width:none;padding-inline:1.1rem}
+  .review-rail::-webkit-scrollbar{display:none}
+  .review-track{animation:none !important;width:auto;gap:1rem}
+  .review-card{flex:0 0 78vw;scroll-snap-align:center;padding:1.8rem 1.6rem 1.6rem}
   .review-card p{font-size:.98rem;line-height:1.8}
-  .review-rail + .review-rail{margin-top:1.1rem}
+  .review-rail + .review-rail{margin-top:1rem}
 }
 /* no autoplay for anyone who has asked for stillness — the row still scrolls by hand */
 @media(prefers-reduced-motion:reduce){
@@ -671,3 +693,13 @@ body.menu-open .nav-toggle span:last-child{transform:translateY(-.5px) rotate(-4
   .review-card{scroll-snap-align:start}
 }
 
+/* ── mobile: legibility and thumb comfort ─────────────────── */
+@media(max-width:820px){
+  /* tracked micro-labels read fine at 9.6px on a desktop monitor and not at
+     arm's length on a phone */
+  .rc-source,.rc-treatment{font-size:.68rem}
+  .strip span{font-size:.72rem}
+  .foot-credit,.foot-legal{font-size:.74rem}
+  /* footer links sat at 34px; a thumb wants 44 */
+  footer li a{padding:.55rem 0}
+}

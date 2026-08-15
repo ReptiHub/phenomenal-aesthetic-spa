@@ -171,18 +171,16 @@
   addEventListener('resize', function(){ if (innerWidth > 820) setOpen(false); });
 })();
 
-/* ── sticky bar: live availability ────────────────────────── */
+/* ── sticky bar: today's date ─────────────────────────────── */
 (function(){
   var el = document.querySelector('[data-avail]');
   if (!el) return;
-  var now = new Date(), h = now.getHours();
-  var day = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-  if (h < 10)       el.textContent = 'Today from 10am';
-  else if (h < 19)  el.textContent = 'Open now until 7pm';
-  else {
-    var t = new Date(now.getTime() + 864e5);
-    el.textContent = day[t.getDay()] + ' from 10am';
-  }
+  var DAY = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  var MON = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+  var d = new Date();
+  /* once we have closed, the next bookable day is tomorrow */
+  if (d.getHours() >= 19) d = new Date(d.getTime() + 864e5);
+  el.textContent = DAY[d.getDay()] + ' ' + d.getDate() + ' ' + MON[d.getMonth()];
 })();
 
 /* ── accordions: one open at a time, closed gently ────────── */
@@ -210,6 +208,9 @@
   var tracks = document.querySelectorAll('.review-track');
   if (!tracks.length) return;
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+  /* clones exist only for the desktop loop; on a phone the rails are swiped
+     by hand, so duplicating every review just doubles the distance travelled */
+  if (innerWidth <= 860) return;
 
   /* each rail needs a second copy to travel through; the clones are hidden
      from assistive tech and from search so no review is counted twice */

@@ -32,11 +32,42 @@ Open `index.html` in any browser, or serve the folder.
    Marked with `DEMO PLACEHOLDER` comments.
 2. **Care team** — replace the RN / LE / MT placeholder cards on `why-us.html`
    with real staff.
-3. **Reviews** — swap the rating band for two or three real Google review quotes.
+3. **Payment methods** — `paymentAccepted` in the homepage structured data is an
+   assumption (cash, Visa, Mastercard, Amex, Discover, Apple Pay). Confirm with the
+   owners or delete the line: search engines and AI assistants quote it as fact.
 4. **Analytics** — any tracking must be gated on `localStorage['pa-consent'] === 'all'`
    so the cookie banner is honest rather than decorative.
 5. **Canonicals** — `sitemap.xml`, `robots.txt` and the `<link rel="canonical">`
    tags point at `phenomenalaestheticspa.com`; confirm before going live.
+
+## Performance
+
+Measured on the homepage at 375px:
+
+| | |
+|---|---|
+| Requests | 7 |
+| Transferred | 345 KB |
+| First contentful paint | ~100 ms (local) |
+
+- The hero is served at 900px to phones and 1600px to desktops via a media query,
+  so a phone never downloads the large plate.
+- Photographs are sized to their display box; the closing CTA band sits under a
+  76% dark gradient so it uses a low-detail crop.
+- Fonts are preloaded above the structured data, which is otherwise ~15KB of head
+  the preload scanner would read through first.
+- Every image carries intrinsic `width`/`height`, so nothing reflows on load.
+
+## Findability (SEO / AEO / GEO)
+
+- `MedicalSpa` entity on every page sharing one `@id`, with address, geo, hours,
+  services with prices, service area, aggregate rating and named reviews.
+- `FAQPage` on the homepage (4 questions) and `faq.html` (8), `ItemList` of 13
+  priced `Service` objects on `treatments.html`, `BreadcrumbList` on inner pages.
+- `robots.txt` explicitly admits GPTBot, OAI-SearchBot, ClaudeBot, PerplexityBot,
+  Google-Extended and Applebot-Extended.
+- Titles are 39–55 characters and descriptions 139–153, so neither is truncated in
+  a result. Prices appear as literal text, not images, so they can be quoted.
 
 ## Notes
 
