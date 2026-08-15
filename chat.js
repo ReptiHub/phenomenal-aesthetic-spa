@@ -199,7 +199,7 @@
     document.body.classList.add('chat-open');
     launcher.setAttribute('aria-expanded','true');
     if (!FAQ){
-      fetch('faq.json?v=26ab7ac').then(function(r){ return r.json(); }).then(function(d){
+      fetch('faq.json?v=3015f65').then(function(r){ return r.json(); }).then(function(d){
         FAQ = d;
         if (!started) start();
       }).catch(function(){
