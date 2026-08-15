@@ -628,14 +628,40 @@ body.menu-open .nav-toggle span:last-child{transform:translateY(-.5px) rotate(-4
   .page-hero{height:auto;min-height:300px;padding:3.4rem 0 3rem}
 }
 
-/* ── review wall ──────────────────────────────────────────── */
-.review-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;margin-top:3rem;text-align:left}
-.review-card{border:1px solid rgba(201,168,120,.26);padding:1.9rem 1.7rem;display:flex;flex-direction:column;background:rgba(247,242,234,.03)}
-.review-card .rc-stars{color:var(--gold-soft);letter-spacing:.22em;font-size:.82rem;margin-bottom:1rem}
-.review-card p{font-size:.92rem;line-height:1.72;color:rgba(247,242,234,.82);margin:0 0 1.4rem;flex:1}
-.review-card cite{font-style:normal;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-soft)}
-.review-card cite span{display:block;color:rgba(247,242,234,.4);letter-spacing:.12em;margin-top:.3rem}
-@media(max-width:860px){.review-grid{grid-template-columns:1fr;gap:1rem;margin-top:2.2rem}}
+/* ── review row ───────────────────────────────────────────── */
+.reviews .sec-head{margin:0 auto 3.2rem;text-align:center}
+.reviews .sec-head h2{color:var(--ivory)}
+
+/* the rail runs edge to edge; the fade keeps it from ending abruptly */
+.review-rail{position:relative;overflow:hidden;
+  -webkit-mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent);
+          mask-image:linear-gradient(90deg,transparent,#000 9%,#000 91%,transparent)}
+.review-track{display:flex;gap:1.3rem;width:max-content;
+  animation:reviewDrift 132s linear infinite;will-change:transform}
+.review-rail:hover .review-track,
+.review-rail:focus-within .review-track{animation-play-state:paused}
+@keyframes reviewDrift{from{transform:translate3d(0,0,0)}to{transform:translate3d(-50%,0,0)}}
+
+.review-card{flex:0 0 clamp(300px,26vw,360px);border:1px solid rgba(201,168,120,.24);
+  background:linear-gradient(160deg,rgba(247,242,234,.05),rgba(247,242,234,.015));
+  padding:2.1rem 1.9rem;display:flex;flex-direction:column;transition:border-color .5s ease}
+.review-card:hover{border-color:rgba(201,168,120,.5)}
+.rc-stars{color:var(--gold-soft);letter-spacing:.24em;font-size:.78rem;margin-bottom:1.1rem}
+.review-card p{font-family:var(--accent);font-style:italic;font-size:1.1rem;line-height:1.6;
+  color:rgba(247,242,234,.9);margin:0 0 1.5rem;flex:1}
+.rc-name{font-family:var(--serif);font-size:.94rem;color:var(--ivory);letter-spacing:.02em}
+.rc-source{display:block;font-size:.64rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold-soft);margin-top:.35rem}
+.rc-treatment{display:block;font-size:.64rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(247,242,234,.36);margin-top:.2rem}
+
+@media(max-width:860px){
+  .review-card{flex:0 0 78vw;padding:1.7rem 1.5rem}
+  .review-card p{font-size:1.04rem}
+}
+/* no autoplay for anyone who has asked for stillness — the row still scrolls by hand */
+@media(prefers-reduced-motion:reduce){
+  .review-track{animation:none;overflow-x:auto;scroll-snap-type:x mandatory}
+  .review-card{scroll-snap-align:start}
+}
 
 /* ── review wall ──────────────────────────────────────────── */
 .reviews .sec-head{margin:0 auto 3.2rem;text-align:center}
