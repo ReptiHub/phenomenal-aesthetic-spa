@@ -37,7 +37,10 @@ Open `index.html` in any browser, or serve the folder.
    owners or delete the line: search engines and AI assistants quote it as fact.
 4. **Analytics** — any tracking must be gated on `localStorage['pa-consent'] === 'all'`
    so the cookie banner is honest rather than decorative.
-5. **Canonicals** — `sitemap.xml`, `robots.txt` and the `<link rel="canonical">`
+5. **Remove the noindex** — every page ships `<meta name="robots" content="noindex,nofollow">`
+   so the demo cannot be indexed or cited while it carries placeholder credentials.
+   Switch to `index,follow` on the day the real content lands.
+6. **Canonicals** — `sitemap.xml`, `robots.txt` and the `<link rel="canonical">`
    tags point at `phenomenalaestheticspa.com`; confirm before going live.
 
 ## Performance
