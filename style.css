@@ -7,9 +7,9 @@
   --porcelain:#fdfbf7;
   --stone:#8a8074;
   --line:rgba(24,20,16,.12);
-  --serif:'Marcellus',serif;
-  --accent:'Cormorant Garamond',serif;
-  --sans:'Jost',sans-serif;
+  --serif:'Marcellus',Georgia,'Times New Roman',serif;
+  --accent:'Cormorant Garamond',Georgia,serif;
+  --sans:'Jost','Helvetica Neue',Helvetica,Arial,sans-serif;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -212,18 +212,18 @@ footer li{list-style:none;margin-bottom:.55rem}
 @media(max-width:600px){.menu-item{flex-direction:column;gap:.6rem}.menu-item .mi-meta{text-align:left}}
 
 /* luxury category chapters (treatments page) */
-.cat-block{display:grid;grid-template-columns:.85fr 1.15fr;gap:4.5rem;padding:5rem 0;border-bottom:1px solid var(--line);align-items:center}
+.cat-block{display:grid;grid-template-columns:.85fr 1.15fr;gap:4.5rem;padding:5rem 0;border-bottom:1px solid var(--line);align-items:stretch;min-height:460px}
 .cat-block:last-of-type{border-bottom:none}
 .cat-block.flip .cat-media{order:2}
-.cat-media{position:sticky;top:110px}
-.cat-media img{aspect-ratio:4/5;object-fit:cover;width:100%;max-height:500px;display:block}
+.cat-media{display:flex}
+.cat-media img{width:100%;height:100%;object-fit:cover;display:block}
 .cat-media{isolation:isolate}
 .cat-media::after{content:"";position:absolute;inset:1.1rem -1.1rem -1.1rem 1.1rem;border:1px solid var(--gold);z-index:-1}
 .cat-block.flip .cat-media::after{inset:1.1rem 1.1rem -1.1rem -1.1rem}
 .cat-num{font-family:var(--serif);color:var(--gold);letter-spacing:.3em;font-size:.8rem;text-transform:uppercase;margin-bottom:.9rem}
 .cat-num::after{content:"";display:inline-block;width:3.5rem;height:1px;background:var(--gold);margin-left:1rem;vertical-align:middle;opacity:.5}
 .menu-cat h2{margin-bottom:.3rem}
-.menu-more{border-bottom:none;margin-top:.4rem}
+.menu-more{border-bottom:none;margin-top:.4rem;margin-bottom:0}
 .menu-more>summary{font-family:var(--sans);font-size:.74rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:500;padding:1.1rem 0;border-bottom:none}
 .menu-more>summary::after{right:auto;margin-left:.8rem;position:static;display:inline-block;transform:none;vertical-align:middle}
 .menu-more[open]>summary::after{transform:rotate(45deg)}
@@ -601,3 +601,26 @@ body.menu-open .nav-toggle span:last-child{transform:translateY(-.5px) rotate(-4
   background:linear-gradient(160deg,rgba(176,131,73,.16),rgba(24,20,16,.14));mix-blend-mode:multiply}
 @media(prefers-reduced-motion:no-preference){.map-frame{transition:filter .6s ease}}
 .map-wrap:hover .map-frame{filter:grayscale(.35) sepia(.4) saturate(.95) brightness(.9) contrast(1.04) hue-rotate(-6deg)}
+
+/* the text column fills its half so the two columns close on the same line */
+.cat-block .menu-cat{display:flex;flex-direction:column;justify-content:center;margin-bottom:0}
+
+/* ── WHY US: image and pillars share top and bottom edges ── */
+.why-grid{align-items:stretch}
+.why-img{display:flex}
+.why-img img{height:100%;aspect-ratio:auto}
+.pillars{display:flex;flex-direction:column;justify-content:center}
+
+/* ── FAQ: photograph matches the height of the question list ── */
+.faq-grid{align-items:stretch}
+.faq-aside{display:flex;align-self:auto;margin-top:0}
+.faq-aside img{height:100%;aspect-ratio:auto}
+
+@media(max-width:900px){
+  .cat-block{min-height:0;align-items:start}
+  .cat-media img{height:auto;aspect-ratio:16/10}
+}
+@media(max-width:860px){
+  .why-grid,.faq-grid{align-items:start}
+  .why-img img,.faq-aside img{height:auto;aspect-ratio:16/10}
+}
