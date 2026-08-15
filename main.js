@@ -204,6 +204,10 @@
     items.forEach(function(d){
       d.addEventListener('toggle', function(){
         if (!d.open) return;
+        /* on a phone, closing a question that sits above the one just tapped
+           collapses the list upward and drags the tapped row out from under
+           the thumb mid-animation — so phones simply keep both open */
+        if (innerWidth <= 820) return;
         items.forEach(function(other){
           if (other !== d && other.open) other.open = false;   /* CSS eases the close */
         });

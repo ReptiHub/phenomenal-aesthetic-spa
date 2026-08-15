@@ -19,7 +19,7 @@
   --accent:'Cormorant Garamond',Georgia,serif;
   --sans:'Jost','Helvetica Neue',Helvetica,Arial,sans-serif;
 }
-*{margin:0;padding:0;box-sizing:border-box}
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html{scroll-behavior:smooth;background:#181410;overscroll-behavior-y:none}
 body{font-family:var(--sans);color:var(--ink);background:var(--porcelain) !important;line-height:1.68;font-weight:300;letter-spacing:.012em;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 img{max-width:100%;height:auto;display:block}
@@ -797,3 +797,16 @@ body.chat-open .chat-panel{opacity:1;visibility:visible;transform:none}
   letter-spacing:.14em;text-transform:uppercase;color:rgba(247,242,234,.55);margin-top:.45rem;font-weight:300}
 .chat-status i{width:5px;height:5px;border-radius:50%;background:#7fb069;flex:none;
   box-shadow:0 0 0 3px rgba(127,176,105,.16)}
+
+/* ── no default tap flash ─────────────────────────────────── */
+/* iOS and Android paint a translucent blue box over whatever you touch */
+*{-webkit-tap-highlight-color:transparent}
+a,button,summary,input,[role="button"]{-webkit-tap-highlight-color:transparent}
+/* removing it must not remove keyboard focus, so give focus a gold ring —
+   :focus-visible shows for keyboards, never for a finger or a mouse */
+a:focus,button:focus,summary:focus,input:focus{outline:none}
+a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{
+  outline:2px solid var(--gold);outline-offset:3px;border-radius:1px}
+::selection{background:rgba(176,131,73,.25);color:var(--ink)}
+.chat-panel ::selection,.svc-panel ::selection,footer ::selection{
+  background:rgba(201,168,120,.32);color:var(--ivory)}
