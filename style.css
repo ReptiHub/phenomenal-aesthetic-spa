@@ -810,3 +810,54 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{
 ::selection{background:rgba(176,131,73,.25);color:var(--ink)}
 .chat-panel ::selection,.svc-panel ::selection,footer ::selection{
   background:rgba(201,168,120,.32);color:var(--ivory)}
+
+/* ── anniversary specials ─────────────────────────────────── */
+.anniv-hero{background:var(--ink) !important;position:relative}
+.anniv-hero::after{content:"";position:absolute;inset:0;pointer-events:none;
+  background:radial-gradient(ellipse at 75% 20%,rgba(176,131,73,.22),transparent 58%)}
+.anniv-hero .wrap{position:relative;z-index:1}
+
+.sp-sec{padding:6.5rem 0}
+.sp-sec--alt{background:var(--paper,#f6f2ec)}
+.sp-head{max-width:56ch;margin-bottom:3rem}
+.sp-head h2{font-size:clamp(1.8rem,4.2vw,2.6rem);margin-bottom:.8rem}
+.sp-head p{color:var(--stone)}
+
+.sp-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(17rem,1fr));gap:1.4rem}
+.sp-card{border:1px solid var(--line);background:#fff;padding:2rem 1.8rem;display:flex;
+  flex-direction:column;transition:border-color .5s ease,box-shadow .5s ease}
+.sp-card:hover{border-color:var(--gold);box-shadow:0 14px 40px rgba(24,20,16,.08)}
+.sp-tag{display:inline-block;align-self:flex-start;font-size:.62rem;letter-spacing:.2em;
+  text-transform:uppercase;color:#fff;background:var(--gold);padding:.4rem .7rem;margin-bottom:1.1rem}
+.sp-card h3{font-size:1.32rem;margin-bottom:.6rem}
+.sp-price{font-family:var(--serif);font-size:2.1rem;color:var(--gold);line-height:1;margin-bottom:.8rem}
+.sp-price span{font-family:var(--sans);font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--stone)}
+.sp-desc{font-size:.94rem;color:var(--stone);flex:1;margin-bottom:1.2rem}
+.sp-card .btn{align-self:flex-start}
+/* the flagship offer carries the weight of the page */
+.sp-card--hero{background:var(--ink);border-color:var(--gold)}
+.sp-card--hero h3{color:var(--ivory)}
+.sp-card--hero .sp-desc{color:rgba(247,242,234,.72)}
+.sp-card--hero .sp-price{color:var(--gold-soft)}
+.sp-card--hero .sp-price span{color:rgba(247,242,234,.5)}
+
+.gift-sec{background:var(--ink);color:var(--ivory);text-align:center;padding:6.5rem 0}
+.gift-sec .eyebrow{color:var(--gold-soft)}
+.gift-sec h2{font-size:clamp(2rem,5.5vw,3.2rem);margin-bottom:.9rem}
+.gift-lead{color:rgba(247,242,234,.72);max-width:46ch;margin:0 auto 2.6rem}
+.gift-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem;max-width:44rem;
+  margin:0 auto 2.6rem}
+.gift-card{border:1px solid rgba(201,168,120,.35);padding:1.8rem 1rem}
+.gc-face{font-family:var(--serif);font-size:1.9rem;color:var(--ivory);line-height:1}
+.gc-label{font-size:.62rem;letter-spacing:.2em;text-transform:uppercase;
+  color:rgba(247,242,234,.5);margin:.4rem 0 1rem}
+.gc-pay{font-family:var(--serif);font-size:2.2rem;color:var(--gold-soft);line-height:1}
+.sp-terms{font-size:.72rem;line-height:1.7;color:rgba(255,255,255,.5);max-width:60ch;
+  margin:2.4rem auto 0}
+
+@media(max-width:640px){
+  .sp-sec,.gift-sec{padding:4rem 0}
+  .gift-grid{grid-template-columns:1fr;max-width:22rem}
+  .sp-card{padding:1.5rem 1.3rem}
+}
