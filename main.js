@@ -1,3 +1,6 @@
+/* ensure the deferred stylesheet is applied even if its onload was missed */
+(function(){var l=document.querySelector('link[href$="style.css"][media="print"]');if(l) l.media='all';})();
+
 (function(){
   /* tell the CSS the script is alive — this disarms the reveal failsafe */
   document.documentElement.classList.add('js-ready');
