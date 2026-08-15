@@ -96,17 +96,17 @@
   var launcher = document.createElement('button');
   launcher.className = 'chat-launch';
   launcher.type = 'button';
-  launcher.setAttribute('aria-label','Chat with Nora, our booking concierge');
-  launcher.innerHTML = '<span class="cl-icon" aria-hidden="true"></span><span class="cl-text">Ask Nora</span>';
+  launcher.setAttribute('aria-label','Chat with Sophia, our booking concierge');
+  launcher.innerHTML = '<span class="cl-icon" aria-hidden="true"></span><span class="cl-text">Ask Sophia</span>';
 
   var panel = document.createElement('div');
   panel.className = 'chat-panel';
   panel.setAttribute('role','dialog');
-  panel.setAttribute('aria-label','Chat with Nora');
+  panel.setAttribute('aria-label','Chat with Sophia');
   panel.innerHTML =
     '<div class="chat-head">' +
       '<div><p class="chat-eyebrow">Phenomenal Aesthetic</p>' +
-      '<p class="chat-title">Nora</p>' +
+      '<p class="chat-title">Sophia</p>' +
       '<p class="chat-status"><i></i>Booking around the clock</p></div>' +
       '<button class="chat-close" type="button" aria-label="Close"></button>' +
     '</div>' +
@@ -208,7 +208,7 @@
   }
   function start(){
     started = true;
-    bubble('bot','Good day — I\'m Nora, the concierge at Phenomenal Aesthetic. Treatments run ten ' +
+    bubble('bot','Good day — I\'m Sophia, the concierge at Phenomenal Aesthetic. Treatments run ten ' +
                  'until seven, but you can chat or call at any hour and I will take your booking. ' +
                  'Ask me about any treatment, its price, or what it is good for.');
     renderChips();
