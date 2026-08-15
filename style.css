@@ -216,11 +216,11 @@ footer li{list-style:none;margin-bottom:.55rem}
 @media(max-width:600px){.menu-item{flex-direction:column;gap:.6rem}.menu-item .mi-meta{text-align:left}}
 
 /* luxury category chapters (treatments page) */
-.cat-block{display:grid;grid-template-columns:.85fr 1.15fr;gap:5.5rem;padding:6.5rem 0;border-bottom:1px solid var(--line);align-items:stretch;min-height:460px}
+.cat-block{display:grid;grid-template-columns:.85fr 1.15fr;gap:5.5rem;padding:6.5rem 0;border-bottom:1px solid var(--line);align-items:start}
 .cat-block:last-of-type{border-bottom:none}
 .cat-block.flip .cat-media{order:2}
-.cat-media{display:flex;align-self:stretch;height:100%}
-.cat-media img{width:100%;height:100%;object-fit:cover;display:block}
+.cat-media{display:block;align-self:start}
+.cat-media img{width:100%;aspect-ratio:4/5;max-height:540px;object-fit:cover;display:block}
 .cat-media{isolation:isolate}
 .cat-media::after{content:"";position:absolute;inset:1.1rem -1.1rem -1.1rem 1.1rem;border:1px solid var(--gold);z-index:-1}
 .cat-block.flip .cat-media::after{inset:1.1rem 1.1rem -1.1rem -1.1rem}
@@ -604,18 +604,18 @@ body.menu-open .nav-toggle span:last-child{transform:translateY(-.5px) rotate(-4
 .map-wrap:hover .map-frame{filter:grayscale(.35) sepia(.4) saturate(.95) brightness(.9) contrast(1.04) hue-rotate(-6deg)}
 
 /* the text column fills its half so the two columns close on the same line */
-.cat-block .menu-cat{display:flex;flex-direction:column;justify-content:center;margin-bottom:0;align-self:stretch}
+.cat-block .menu-cat{display:block;margin-bottom:0;align-self:start}
 
 /* ── WHY US: image and pillars share top and bottom edges ── */
-.why-grid{align-items:stretch}
-.why-img{display:flex;align-self:stretch;height:100%}
-.why-img img{height:100%;aspect-ratio:auto}
-.pillars{display:flex;flex-direction:column;justify-content:center}
+.why-grid{align-items:start}
+.why-img{display:block;align-self:start}
+.why-img img{aspect-ratio:4/5;max-height:560px;height:auto}
+.pillars{display:block}
 
 /* ── FAQ: photograph matches the height of the question list ── */
-.faq-grid{align-items:stretch}
-.faq-aside{display:flex;align-self:stretch;height:100%;margin-top:0}
-.faq-aside img{height:100%;aspect-ratio:auto}
+.faq-grid{align-items:start}
+.faq-aside{display:block;align-self:start;margin-top:0}
+.faq-aside img{aspect-ratio:3/4;max-height:560px;height:auto}
 
 @media(max-width:900px){
   .cat-block{min-height:0;align-items:start}
