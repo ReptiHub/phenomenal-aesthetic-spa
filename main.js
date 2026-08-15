@@ -138,7 +138,8 @@
       '<button class="btn btn-gold" type="button" data-consent="all">Accept All</button>' +
     '</div>';
   document.body.appendChild(el);
-  requestAnimationFrame(function(){ el.classList.add('in'); });
+  /* let the hero land before asking anything — the banner covers it otherwise */
+  setTimeout(function(){ el.classList.add('in'); }, 1400);
 
   el.addEventListener('click', function(e){
     var b = e.target.closest('[data-consent]');
