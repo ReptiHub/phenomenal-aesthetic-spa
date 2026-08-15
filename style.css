@@ -193,7 +193,7 @@ footer li{list-style:none;margin-bottom:.55rem}
 .rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
 /* inner pages */
-.page-hero{background:var(--ink) !important;color:var(--ivory);padding:6.5rem 0 5rem;min-height:clamp(340px,40vh,420px);display:flex;align-items:flex-start}
+.page-hero{background:var(--ink) !important;color:var(--ivory);padding:6.5rem 0 5rem;height:420px;display:flex;align-items:flex-start;overflow:hidden}
 .page-hero h1{margin-top:0}
 .page-hero .eyebrow{margin-bottom:1.1rem}
 .page-hero .eyebrow{color:var(--gold-soft)}
@@ -624,4 +624,11 @@ body.menu-open .nav-toggle span:last-child{transform:translateY(-.5px) rotate(-4
 @media(max-width:860px){
   .why-grid,.faq-grid{align-items:start}
   .why-img img,.faq-aside img{height:auto;aspect-ratio:16/10}
+}
+
+/* header content is held to a fixed frame on every page */
+.page-hero .wrap{width:min(1120px,92%)}
+.page-hero p.lead{max-width:52ch}
+@media(max-width:820px){
+  .page-hero{height:auto;min-height:300px;padding:3.4rem 0 3rem}
 }
