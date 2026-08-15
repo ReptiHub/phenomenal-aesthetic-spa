@@ -4,7 +4,7 @@
   var panel = document.getElementById('svcPanel');
   if (!stage || !panel) return;
 
-  var BOOK = 'https://phenomenalaestheticspa.glossgenius.com/services';
+  var BOOK = 'treatments.html';   /* our own menu, not a third-party page */
   var DATA = {
     facials: {label:'Facial Treatments', items:[
       ['Phenomenal Deep Glow Facial','$170'],['Hydrafacial Treatment','$175'],
@@ -40,7 +40,7 @@
       '</div>' +
       '<div class="p-foot"><p>' + d.note +
         (d.more ? ' &middot; <a class="p-more" href="treatments.html#' + d.more + '">See the full menu</a>' : '') + '</p>' +
-      '<a class="btn btn-gold" href="' + BOOK + '" target="_blank" rel="noopener">Book Your Visit</a></div>';
+      '<a class="btn btn-gold" href="' + BOOK + '" target="_blank" rel="noopener">See the full menu</a></div>';
   }
 
   function open(key){
