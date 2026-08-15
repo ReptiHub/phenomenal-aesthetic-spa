@@ -205,15 +205,17 @@
   });
 })();
 
-/* ── review row: seamless drift ───────────────────────────── */
+/* ── review rows: seamless drift ──────────────────────────── */
 (function(){
-  var track = document.querySelector('.review-track');
-  if (!track) return;
+  var tracks = document.querySelectorAll('.review-track');
+  if (!tracks.length) return;
   if (matchMedia('(prefers-reduced-motion: reduce)').matches) return;
 
-  /* the loop needs a second copy to travel through; clones are hidden from
-     assistive tech and from search so the reviews are only counted once */
-  var clone = track.cloneNode(true);
-  Array.prototype.forEach.call(clone.children, function(c){ c.setAttribute('aria-hidden','true'); });
-  while (clone.firstChild) track.appendChild(clone.firstChild);
+  /* each rail needs a second copy to travel through; the clones are hidden
+     from assistive tech and from search so no review is counted twice */
+  Array.prototype.forEach.call(tracks, function(track){
+    var clone = track.cloneNode(true);
+    Array.prototype.forEach.call(clone.children, function(c){ c.setAttribute('aria-hidden','true'); });
+    while (clone.firstChild) track.appendChild(clone.firstChild);
+  });
 })();
