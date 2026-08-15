@@ -33,9 +33,10 @@
       '<button class="p-close" type="button" aria-label="Close"></button>' +
       '<p class="p-eyebrow">' + d.label + '</p>' +
       '<div class="p-scroll">' +
-      d.items.map(function(i,n){
-        return '<div class="p-row" style="animation-delay:' + (0.25 + n*0.035).toFixed(3) + 's"><b>' +
-               i[0] + '</b><span>' + i[1] + '</span></div>';
+      d.items.map(function(i){
+        /* no per-row fade: a staggered reveal leaves the panel looking empty
+           if anything delays it, and the prices are the point */
+        return '<div class="p-row"><b>' + i[0] + '</b><span>' + i[1] + '</span></div>';
       }).join('') +
       '</div>' +
       '<div class="p-foot"><p>' + d.note +
@@ -52,16 +53,21 @@
     var first = wide ? cards.map(function(c){ return c.getBoundingClientRect().left; }) : null;
 
     render(d);
-    var col = 2;
-    cards.forEach(function(c){
+    var col = 2, activeIndex = 0;
+    cards.forEach(function(c, i){
       var active = c.dataset.key === key;
+      if (active) activeIndex = i;
       c.classList.toggle('is-active', active);
       c.classList.toggle('is-out', !active);
       c.style.gridColumn = wide ? (active ? '1' : String(col++)) : '';
       c.style.gridRow = wide ? '1' : '';
+      /* on a phone every card keeps its place and the panel slots in after
+         the tapped one — hiding the others is what made the card jump */
+      c.style.order = wide ? '' : String(i * 2);
     });
     panel.style.gridColumn = wide ? '2 / -1' : '';
     panel.style.gridRow = wide ? '1' : '';
+    panel.style.order = wide ? '' : String(activeIndex * 2 + 1);
     stage.classList.add('is-open');
 
     if (!wide) return;
@@ -93,8 +99,10 @@
       c.classList.remove('is-active','is-out');
       c.style.gridColumn = '';
       c.style.gridRow = '';
+      c.style.order = '';
       c.style.transform = '';
     });
+    panel.style.order = '';
 
     if (!wide) return;
     var last = cards.map(function(c){ return c.getBoundingClientRect().left; });
