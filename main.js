@@ -229,3 +229,23 @@
     el.textContent = day[t.getDay()] + ' from 10am';
   }
 })();
+
+/* ── accordions: one open at a time, closed gently ────────── */
+(function(){
+  var groups = [].concat(
+    [].slice.call(document.querySelectorAll('.faq-list')),
+    [].slice.call(document.querySelectorAll('#faq .wrap, .faq-sec .wrap'))
+  );
+  groups.forEach(function(group){
+    var items = [].slice.call(group.querySelectorAll(':scope > details'));
+    if (items.length < 2) return;
+    items.forEach(function(d){
+      d.addEventListener('toggle', function(){
+        if (!d.open) return;
+        items.forEach(function(other){
+          if (other !== d && other.open) other.open = false;   /* CSS eases the close */
+        });
+      });
+    });
+  });
+})();

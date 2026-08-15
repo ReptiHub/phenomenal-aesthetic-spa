@@ -410,9 +410,9 @@ summary:hover{color:var(--gold)}
 
 /* ── faq page imagery ─────────────────────────────────────── */
 .faq-main{background:var(--porcelain);padding-bottom:7rem}
-.faq-grid{display:grid;grid-template-columns:.78fr 1.22fr;gap:4rem;align-items:start}
-.faq-aside{position:sticky;top:110px}
-.faq-aside img{aspect-ratio:4/5;object-fit:cover;width:100%;display:block}
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:4rem;align-items:start}
+.faq-aside{align-self:start;margin-top:.4rem}
+.faq-aside img{aspect-ratio:3/4;object-fit:cover;width:100%;display:block}
 .faq-aside-note{margin-top:1.1rem;font-size:.78rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold);line-height:1.9}
 .faq-aside-note span{color:var(--stone);letter-spacing:.1em}
 @media(max-width:860px){
@@ -592,3 +592,5 @@ body.menu-open .nav-toggle span:last-child{transform:translateY(-.5px) rotate(-4
 /* full-bleed photographic bands get the same warmth, tuned darker */
 .hero::before{filter:var(--grade)}
 .final{background-blend-mode:multiply,normal}
+
+.faq-list details:first-of-type summary{padding-top:.2rem}
