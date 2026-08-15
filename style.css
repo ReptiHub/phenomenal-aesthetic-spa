@@ -882,6 +882,11 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{
   .gift-sec{padding:4.2rem 0}
   .gift-grid{grid-template-columns:1fr;max-width:20rem;gap:1rem}
   .gift-card{padding:1.6rem 1rem 1.4rem}
+  .gc-label,.gc-you{font-size:.74rem;letter-spacing:.18em}
+  .offer-deal span{font-size:.78rem;letter-spacing:.14em}
+  .offer-body h3{font-size:1.34rem}
+  .sp-terms{font-size:.82rem;line-height:1.8}
+  .chat-close{width:36px;height:36px}
 }
 
 /* ── legibility for the guests who actually spend ─────────── */
