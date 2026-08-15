@@ -1,51 +1,6 @@
 /* ensure the deferred stylesheet is applied even if its onload was missed */
 (function(){var l=document.querySelector('link[href$="style.css"][media="print"]');if(l) l.media='all';})();
 
-(function(){
-  /* tell the CSS the script is alive — this disarms the reveal failsafe */
-  document.documentElement.classList.add('js-ready');
-  var reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  /* reveal on scroll */
-  document.querySelectorAll('.cat-block').forEach(function(el){ el.classList.add('rv'); });
-
-  /* Only elements below the fold are opted into the entrance animation, and
-     only once we know the observer exists. Everything else simply stays visible. */
-  if ('IntersectionObserver' in window) {
-    var vh = innerHeight;
-    var io = new IntersectionObserver(function(es){
-      es.forEach(function(e){ if (e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
-    }, {threshold:.08});
-
-    document.querySelectorAll('.rv').forEach(function(el){
-      if (el.getBoundingClientRect().top > vh * 0.92) {
-        el.classList.add('will-animate');
-        io.observe(el);
-      }
-    });
-  }
-
-  if (reduce) return;
-
-  /* parallax: hero background + framed images drift gently */
-  var hero = document.querySelector('.hero');
-  var drift = Array.prototype.slice.call(document.querySelectorAll('.cat-media,.why-img'));
-  var ticking = null;
-  function update(){
-    if (hero) hero.style.setProperty('--hy', (window.scrollY * .12).toFixed(1) + 'px');
-    var vh = innerHeight;
-    drift.forEach(function(el){
-      var r = el.getBoundingClientRect();
-      if (r.bottom < -100 || r.top > vh + 100) return;
-      var p = ((r.top + r.height/2) - vh/2) / vh;   /* -0.5 … 0.5 through viewport */
-      el.style.setProperty('--plx', (p * -26).toFixed(1) + 'px');
-    });
-    ticking = null;
-  }
-  addEventListener('scroll', function(){ if(!ticking) ticking = requestAnimationFrame(update); }, {passive:true});
-  update();
-})();
-
 /* ── homepage treatment accordion ─────────────────────────── */
 (function(){
   var stage = document.getElementById('svcStage');

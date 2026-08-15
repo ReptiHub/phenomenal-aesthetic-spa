@@ -66,8 +66,8 @@ nav{position:sticky;top:0;z-index:50;background:rgba(253,251,247,.92);backdrop-f
 @media(max-width:720px){.strip-in{grid-template-columns:repeat(2,1fr);gap:1.4rem 1rem}}
 
 /* sections */
-section{padding:6rem 0}
-.sec-head{max-width:60ch;margin-bottom:3rem}
+section{padding:8.5rem 0}
+.sec-head{max-width:58ch;margin-bottom:4rem}
 .sec-head h2{font-size:clamp(1.9rem,4.5vw,2.9rem);margin-bottom:.9rem}
 .sec-head p{color:var(--stone);font-size:1rem}
 
@@ -85,7 +85,7 @@ section{padding:6rem 0}
 .svc a:hover{color:var(--gold)}
 
 /* why */
-.why-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:4rem;align-items:center}
+.why-grid{display:grid;grid-template-columns:1.05fr .95fr;gap:5rem;align-items:center}
 .why-img{position:relative}
 .why-img{overflow:visible}
 .why-img img{aspect-ratio:4/5;object-fit:cover;width:100%;transition:transform .6s ease}
@@ -126,7 +126,7 @@ details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
 details p{padding:0 0 1.4rem;color:var(--stone);font-size:.95rem;max-width:65ch}
 
 /* ── medical oversight — the trust anchor ─────────────────── */
-.medcred{background:var(--ink);color:var(--ivory);position:relative;overflow:hidden;border-top:1px solid rgba(201,168,120,.28);padding:7.5rem 0;min-height:clamp(520px,64vh,660px);display:flex;align-items:center}
+.medcred{background:var(--ink);color:var(--ivory);position:relative;overflow:hidden;border-top:1px solid rgba(201,168,120,.28);padding:9rem 0;min-height:clamp(520px,64vh,660px);display:flex;align-items:center}
 .medcred::before{content:"";position:absolute;inset:-45%;background:radial-gradient(ellipse at 22% 40%,rgba(176,131,73,.22),transparent 58%);pointer-events:none}
 .medcred .wrap{position:relative;width:min(1120px,92%)}
 .medcred-grid{display:grid;grid-template-columns:auto 1fr;gap:4.4rem;align-items:center}
@@ -160,7 +160,7 @@ details p{padding:0 0 1.4rem;color:var(--stone);font-size:.95rem;max-width:65ch}
 @media(max-width:520px){.medcred-chips{grid-template-columns:1fr}.medcred-chips span{border-right:none}}
 
 /* final cta */
-.final{background:linear-gradient(rgba(36,29,22,.74),rgba(24,20,16,.78)),url('images/reception.jpg') center/cover;color:#fff;text-align:center;padding:6.5rem 0}
+.final{padding:8.5rem 0;background:linear-gradient(rgba(36,29,22,.74),rgba(24,20,16,.78)),url('images/reception.jpg') center/cover;color:#fff;text-align:center;padding:6.5rem 0}
 .final h2{font-size:clamp(2rem,5.5vw,3.2rem);max-width:20ch;margin:0 auto 1rem}
 .final p{color:rgba(255,255,255,.8);margin-bottom:2rem}
 
@@ -186,12 +186,14 @@ footer li{list-style:none;margin-bottom:.55rem}
 /* reveal */
 /* Content is ALWAYS visible by default. The script may opt an element into
    an entrance animation, but nothing here ever depends on JS to be seen. */
-.rv{transition:opacity .7s ease,transform .7s ease}
-.rv.will-animate:not(.in){opacity:0;transform:translateY(24px)}
+/* No entrance animation. Content is simply, immediately there — motion on
+   arrival is what reads as restless. Movement is reserved for what the
+   visitor actually touches. */
+.rv{opacity:1;transform:none}
 .rv.in{opacity:1;transform:none}
 @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
 /* inner pages */
-.page-hero{background:var(--ink) !important;color:var(--ivory);padding:4.5rem 0;min-height:clamp(300px,36vh,380px);display:flex;align-items:center}
+.page-hero{background:var(--ink) !important;color:var(--ivory);padding:5.5rem 0;min-height:clamp(340px,40vh,420px);display:flex;align-items:center}
 .page-hero .eyebrow{color:var(--gold-soft)}
 .page-hero h1{font-family:var(--serif);font-size:clamp(2.1rem,5vw,3.3rem);font-weight:400;max-width:22ch}
 .page-hero p.lead{color:rgba(247,242,234,.7);max-width:52ch;margin-top:1.1rem;font-size:.98rem}
@@ -212,10 +214,10 @@ footer li{list-style:none;margin-bottom:.55rem}
 @media(max-width:600px){.menu-item{flex-direction:column;gap:.6rem}.menu-item .mi-meta{text-align:left}}
 
 /* luxury category chapters (treatments page) */
-.cat-block{display:grid;grid-template-columns:.85fr 1.15fr;gap:4.5rem;padding:5rem 0;border-bottom:1px solid var(--line);align-items:stretch;min-height:460px}
+.cat-block{display:grid;grid-template-columns:.85fr 1.15fr;gap:5.5rem;padding:6.5rem 0;border-bottom:1px solid var(--line);align-items:stretch;min-height:460px}
 .cat-block:last-of-type{border-bottom:none}
 .cat-block.flip .cat-media{order:2}
-.cat-media{display:flex}
+.cat-media{display:flex;align-self:stretch;height:100%}
 .cat-media img{width:100%;height:100%;object-fit:cover;display:block}
 .cat-media{isolation:isolate}
 .cat-media::after{content:"";position:absolute;inset:1.1rem -1.1rem -1.1rem 1.1rem;border:1px solid var(--gold);z-index:-1}
@@ -286,16 +288,13 @@ summary:hover{color:var(--gold)}
 .step{border-top:1px solid var(--gold);padding-top:1.4rem}
 
 /* parallax & motion */
-.hero::before{transform:translateY(var(--hy,0)) scale(1.14);will-change:transform}
-.cat-media{transform:translateY(var(--plx,0))}
-.why-img{transform:translateY(var(--plx,0))}
-@media(min-width:900px){.final{background-attachment:fixed}}
+.hero::before{transform:scale(1.06)}
 @keyframes floaty{from{transform:translateY(0)}to{transform:translateY(-6px)}}
 .medcred-avatar,.team-avatar{animation:floaty 4.5s ease-in-out infinite alternate}
 @media(prefers-reduced-motion:reduce){.hero::before,.cat-media,.why-img{transform:none}.medcred-avatar,.team-avatar{animation:none}.final{background-attachment:scroll}}
 
 /* flagship — stem cell */
-.flagship{background:var(--ink);color:var(--ivory);position:relative;overflow:hidden}
+.flagship{padding:8.5rem 0;background:var(--ink);color:var(--ivory);position:relative;overflow:hidden}
 .flagship::before{content:"";position:absolute;inset:-40%;background:radial-gradient(ellipse at 70% 30%,rgba(176,131,73,.18),transparent 55%);pointer-events:none}
 .flagship .wrap{position:relative}
 .flagship .eyebrow{color:var(--gold-soft)}
@@ -410,7 +409,7 @@ summary:hover{color:var(--gold)}
 
 /* ── faq page imagery ─────────────────────────────────────── */
 .faq-main{background:var(--porcelain);padding-bottom:7rem}
-.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:4rem;align-items:start}
+.faq-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:5rem;align-items:start}
 .faq-aside{align-self:start;margin-top:.4rem}
 .faq-aside img{aspect-ratio:3/4;object-fit:cover;width:100%;display:block}
 @media(max-width:860px){
@@ -603,17 +602,17 @@ body.menu-open .nav-toggle span:last-child{transform:translateY(-.5px) rotate(-4
 .map-wrap:hover .map-frame{filter:grayscale(.35) sepia(.4) saturate(.95) brightness(.9) contrast(1.04) hue-rotate(-6deg)}
 
 /* the text column fills its half so the two columns close on the same line */
-.cat-block .menu-cat{display:flex;flex-direction:column;justify-content:center;margin-bottom:0}
+.cat-block .menu-cat{display:flex;flex-direction:column;justify-content:center;margin-bottom:0;align-self:stretch}
 
 /* ── WHY US: image and pillars share top and bottom edges ── */
 .why-grid{align-items:stretch}
-.why-img{display:flex}
+.why-img{display:flex;align-self:stretch;height:100%}
 .why-img img{height:100%;aspect-ratio:auto}
 .pillars{display:flex;flex-direction:column;justify-content:center}
 
 /* ── FAQ: photograph matches the height of the question list ── */
 .faq-grid{align-items:stretch}
-.faq-aside{display:flex;align-self:auto;margin-top:0}
+.faq-aside{display:flex;align-self:stretch;height:100%;margin-top:0}
 .faq-aside img{height:100%;aspect-ratio:auto}
 
 @media(max-width:900px){
