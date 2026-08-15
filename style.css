@@ -1,3 +1,11 @@
+/* ── self-hosted type ─────────────────────────────────────── */
+/* Variable woff2, latin subset, served from our own directory. No third-party
+   request, and font-display:block prevents the swap that made text jump on
+   refresh — the face is either ready or the page waits a beat for it. */
+@font-face{font-family:'Marcellus';src:url('fonts/marcellus-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:block}
+@font-face{font-family:'Cormorant Garamond';src:url('fonts/cormorant-italic.woff2') format('woff2');font-weight:400 500;font-style:italic;font-display:block}
+@font-face{font-family:'Jost';src:url('fonts/jost.woff2') format('woff2');font-weight:300 500;font-style:normal;font-display:block}
+
 :root{
   --ink:#181410;
   --espresso:#241d16;

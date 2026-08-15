@@ -23,6 +23,7 @@ Open `index.html` in any browser, or serve the folder.
 | `style.css` | All styling |
 | `main.js` | Reveals, accordion, mobile menu, consent |
 | `images/` | Self-hosted photography |
+| `fonts/` | Self-hosted woff2 (Marcellus, Cormorant Garamond, Jost) |
 
 ## Before launch — required
 
@@ -41,4 +42,6 @@ Open `index.html` in any browser, or serve the folder.
 
 - Pricing mirrors the GlossGenius booking menu as of August 2026.
 - Photography is the client's own, self-hosted rather than hotlinked.
+- Typefaces are self-hosted woff2, latin subset, 84KB total. No Google Fonts
+  request, so no third-party dependency and no font swap on load.
 - Stem cell copy is deliberately claim-free and consultation-gated.
