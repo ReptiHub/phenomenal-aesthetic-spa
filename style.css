@@ -878,7 +878,13 @@ a:focus-visible,button:focus-visible,summary:focus-visible,input:focus-visible{
   .strip span,.visit-card span{font-size:.8rem}
   .foot-legal{font-size:.8rem;line-height:1.75;color:rgba(247,242,234,.5)}
   footer{font-size:.95rem}
-  .chat-msg p{font-size:1.02rem;line-height:1.75}
+  .chat-msg p{font-size:15px;line-height:1.62;padding:.75rem .95rem}
+  .chat-title{font-size:18px}
+  .chat-chip{font-size:13px;padding:.45rem .7rem}
+  .chat-status{font-size:10px}
+  .chat-foot{font-size:11px}
+  .chat-eyebrow{font-size:10px}
+  .chat-cta{font-size:11px}
   .sp-card h3{font-size:1.3rem}
   .sp-tag{font-size:.7rem}
 }

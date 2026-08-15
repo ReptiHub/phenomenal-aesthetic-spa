@@ -107,7 +107,7 @@
     '<div class="chat-head">' +
       '<div><p class="chat-eyebrow">Phenomenal Aesthetic</p>' +
       '<p class="chat-title">Sophia</p>' +
-      '<p class="chat-status"><i></i>Booking around the clock</p></div>' +
+      '<p class="chat-status"><i></i>Anniversary specials on now</p></div>' +
       '<button class="chat-close" type="button" aria-label="Close"></button>' +
     '</div>' +
     '<div class="chat-log" id="chatLog" role="log" aria-live="polite"></div>' +
@@ -127,7 +127,7 @@
   var form  = panel.querySelector('#chatForm');
   var input = panel.querySelector('#chatInput');
 
-  var CHIPS = ['Can I book now?','How much is a Hydrafacial?','Do you offer Botox?','What happens at a first visit?'];
+  var CHIPS = ['What are your anniversary specials?','How much is Botox?','How much are your gift cards?','Can I book now?'];
 
   function bubble(who, text, opts){
     var el = document.createElement('div');
@@ -135,6 +135,9 @@
     el.innerHTML = '<p>' + text + '</p>';
     if (opts && opts.cta){
       el.innerHTML += '<a class="chat-cta" href="' + BOOK + '">See the full menu</a>';
+    }
+    if (opts && opts.specials){
+      el.innerHTML += '<a class="chat-cta" href="specials.html">See the anniversary specials</a>';
     }
     log.appendChild(el);
     log.scrollTop = log.scrollHeight;
@@ -196,7 +199,7 @@
     document.body.classList.add('chat-open');
     launcher.setAttribute('aria-expanded','true');
     if (!FAQ){
-      fetch('faq.json').then(function(r){ return r.json(); }).then(function(d){
+      fetch('faq.json?v=e24fe4d').then(function(r){ return r.json(); }).then(function(d){
         FAQ = d;
         if (!started) start();
       }).catch(function(){
@@ -208,9 +211,9 @@
   }
   function start(){
     started = true;
-    bubble('bot','Good day — I\'m Sophia, the concierge at Phenomenal Aesthetic. Treatments run ten ' +
-                 'until seven, but you can chat or call at any hour and I will take your booking. ' +
-                 'Ask me about any treatment, its price, or what it is good for.');
+    bubble('bot','Good day &mdash; I\'m Sophia, the concierge at Phenomenal Aesthetic. We are one year old ' +
+                 'this week, and our anniversary specials are running now. Ask me about any treatment or ' +
+                 'offer &mdash; I take bookings at any hour, even once the spa has closed.', {specials:true});
     renderChips();
   }
   function close(){
